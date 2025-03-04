@@ -4,7 +4,7 @@ services:
   web:
     build: .
     container_name: django_api
-    command: ["gunicorn", "-b", "0.0.0.0:8000", "project.wsgi:application"]
+    command: ["gunicorn", "-b", "0.0.0.0:8000", "jbs_backend.wsgi:application"]
     volumes:
       - .:/app
     ports:
