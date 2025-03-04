@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "5053a19e-e496-43c3-9f8a-6c254609a66e",
+		"name": "Django API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5997658"
+	},
+	"item": [
+		{
+			"name": "Gastos",
+			"item": [
+				{
+					"name": "Crear nuevo gasto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usuario\": \"my_user\",\n    \"categoria\": \"entretenimiento\",\n    \"monto\": 56.67\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/api/gastos/",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"gastos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todos los gastos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/api/gastos/",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"gastos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar un gasto especifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/api/gastos/:id/",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"gastos",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un gasto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/api/gastos/:id/",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"gastos",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar un gasto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/api/gastos/:id/",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"gastos",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sign in",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const { access } = pm.response.json();",
+							"",
+							"pm.collectionVariables.set('TOKEN', access);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"jbeltran\",\n    \"password\": \"mypassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/api/token/",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign in Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/api/token/refresh/",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"api",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "TOKEN",
+			"value": ""
+		}
+	]
+}
